@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const https = require('https')
+const https = require('https');
+const fs = require("fs");
 
 const app = express();
 app.use(bodyParser.json());
@@ -69,5 +70,6 @@ try {
         app.handle( req, res );
     } ).listen( portHTTPS, async () => { console.log(`HTTPS Server started at port ${portHTTPS}.`) } );
 } catch(e) {
+    console.log(e);
     console.log("Could not start HTTPS server")
 }
