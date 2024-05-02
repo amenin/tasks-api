@@ -6,6 +6,14 @@ const fs = require("fs");
 const app = express();
 app.use(bodyParser.json());
 
+// Pour accepter les connexions cross-domain (CORS)
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  next();
+});
+
 const tasks = [
     { id: 1, title: 'Faire les courses', description: 'Acheter des légumes et du lait' },
     { id: 2, title: 'Répondre aux e-mails', description: 'Vérifier la boîte de réception' },
